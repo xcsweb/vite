@@ -10,7 +10,6 @@ export default function useScroll() {
     window.addEventListener('scroll', update)
   })
 
-  
   onUnmounted(() => {
     window.removeEventListener('scroll', update)
   })
