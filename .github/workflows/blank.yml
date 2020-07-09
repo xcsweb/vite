@@ -28,13 +28,13 @@ jobs:
     - name: build
       run: |
           npm run build
-    
+          
     - name: Deploy to Staging server
-      uses: easingthemes/ssh-deploy@v2.0.7
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-rltgoDzvO"
-        SOURCE: "dist/"
-        REMOTE_HOST: '${{ secrets.REMOTE_HOST }}'
-        REMOTE_USER: '${{ secrets.REMOTE_USER }}'
-        TARGET: '${{ secrets.REMOTE_TARGET }}'
+      if: github.ref == 'refs/heads/master' #对分支进行检测
+      uses: wlixcc/SFTP-Deploy-Action@v1.0
+      with:
+        username: '${{ secrets.REMOTE_USER }}'
+        server:  '${{ secrets.REMOTE_HOST }}' #正式服务器地址
+        ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
+        local_path: './dist/*'
+        remote_path: '${{ secrets.REMOTE_TARGET }}' #服务器部署路径
