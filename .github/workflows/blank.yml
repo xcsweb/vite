@@ -28,7 +28,18 @@ jobs:
     - name: build
       run: |
           npm run build
-          
+    
+    - name: Get Date
+      id: get-date
+      run: |
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+      shell: bash
+
+    - uses: actions/cache@v2
+      with:
+        path: path/to/dependencies
+        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
+
     - name: Deploy to Staging server
       if: github.ref == 'refs/heads/master' #对分支进行检测
       uses: wlixcc/SFTP-Deploy-Action@v1.0
