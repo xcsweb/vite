@@ -62,6 +62,6 @@ jobs:
         password: ${{ secrets.MAILPASSWORD }}
         subject: deploy success
         body: file://test.html
-        to: 415723074@qq.com
+        to: fsnow929@163.com
         from: GitHub Actions
         content_type: text/html
