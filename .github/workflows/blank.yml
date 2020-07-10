@@ -56,7 +56,7 @@ jobs:
     - name: 'Send mail'
       uses: dawidd6/action-send-mail@master
       with:
-        serveraddress: 'pop.qq.com'
+        server_address: 'pop.qq.com'
         serverport: 465
         username: ${{ secrets.MAILUSERNAME }}
         password: ${{ secrets.MAILPASSWORD }}
