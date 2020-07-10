@@ -49,3 +49,19 @@ jobs:
         ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
         local_path: './dist/*'
         remote_path: '${{ secrets.REMOTE_TARGET }}' #服务器部署路径
+  
+    - name: touch hello world
+      run: echo hello world >> test.html
+         
+    - name: 'Send mail'
+      uses: dawidd6/action-send-mail@master
+      with:
+        serveraddress: mail.qq.com
+        serverport: 80
+        username: ${{ secrets.MAILUSERNAME }}
+        password: ${{ secrets.MAILPASSWORD }}
+        subject: deploy success
+        body: file://test.html
+        to: 415723074@qq.com
+        from: GitHub Actions
+        content_type: text/html
