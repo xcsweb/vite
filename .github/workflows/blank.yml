@@ -56,8 +56,8 @@ jobs:
     - name: 'Send mail'
       uses: dawidd6/action-send-mail@master
       with:
-        serveraddress: mail.qq.com
-        serverport: 80
+        serveraddress: smtp.163.com
+        serverport: 465
         username: ${{ secrets.MAILUSERNAME }}
         password: ${{ secrets.MAILPASSWORD }}
         subject: deploy success
