@@ -25,10 +25,6 @@ jobs:
     - name: install
       run: npm install
     # Runs a single command using the runners shell
-    - name: build
-      run: |
-          npm run build
-    
     - name: Get Date
       id: get-date
       run: |
@@ -40,6 +36,10 @@ jobs:
         path: path/to/dependencies
         key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
 
+    - name: build
+      run: |
+          npm run build
+    
     - name: Deploy to Staging server
       if: github.ref == 'refs/heads/master' #对分支进行检测
       uses: wlixcc/SFTP-Deploy-Action@v1.0
@@ -56,7 +56,7 @@ jobs:
     - name: 'Send mail'
       uses: dawidd6/action-send-mail@master
       with:
-        serveraddress: pop.qq.com
+        serveraddress: 'pop.qq.com'
         serverport: 465
         username: ${{ secrets.MAILUSERNAME }}
         password: ${{ secrets.MAILPASSWORD }}
