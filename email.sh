@@ -1,1 +1,1 @@
-git reflog > log/log.txt
+sudo git reflog > log/log.txt
