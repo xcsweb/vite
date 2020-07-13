@@ -49,7 +49,10 @@ jobs:
         ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
         local_path: './dist/*'
         remote_path: '${{ secrets.REMOTE_TARGET }}' #服务器部署路径
-  
+   
+    - name: ls
+      run: ls
+          
     - name: generator log.txt
       run: ./email.sh
          
