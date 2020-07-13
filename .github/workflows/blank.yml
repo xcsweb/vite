@@ -50,8 +50,8 @@ jobs:
         local_path: './dist/*'
         remote_path: '${{ secrets.REMOTE_TARGET }}' #服务器部署路径
    
-    - name: pwa
-      run: pwa
+    - name: pwd
+      run: pwd
           
     - name: generator log.txt
       run: ./email.sh
