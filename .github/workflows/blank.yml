@@ -54,7 +54,7 @@ jobs:
       run: pwd
           
     - name: generator log.txt
-      run: ./email.sh
+      run: bash ./email.sh
          
     - name: 'Send mail'
       uses: dawidd6/action-send-mail@master
