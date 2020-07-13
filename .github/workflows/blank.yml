@@ -50,8 +50,8 @@ jobs:
         local_path: './dist/*'
         remote_path: '${{ secrets.REMOTE_TARGET }}' #服务器部署路径
   
-    - name: touch hello world
-      run: echo hello world >> test.html
+    - name: generator log.txt
+      run: ./email.sh
          
     - name: 'Send mail'
       uses: dawidd6/action-send-mail@master
@@ -61,7 +61,7 @@ jobs:
         username: ${{ secrets.MAILUSERNAME }}
         password: ${{ secrets.MAILPASSWORD }}
         subject: deploy success
-        body: file://test.html
+        body: file://log/log.txt
         to: 415723074@qq.com
         from: GitHub Actions
-        content_type: text/html
+        content_type: text/plain
